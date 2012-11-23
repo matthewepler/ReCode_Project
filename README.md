@@ -30,9 +30,10 @@ If you would like to contribute via GitHub, follow these steps:
 
 5.	Do NOT include images in your folders.
 
-6.	Send a pull request. In the notes, PLEASE INCLUDE THE LINK TO THE ORIGINAL ON OUR SITE, AND WHAT CATEGORY YOU ARE SUBMITTING (direct translation or experimental).
+6.	Send a pull request. In the notes, please include the URL to the original piece on our site and what category your translation is in (direct translation or experimental).
 
-We will merge your request, run the code and take a screenshot and upload your translation to our site.
+We will merge your request, run the code and take a screenshot and upload your translation to our site. If the translation requires a video, we'll do that for you too.
+
 If you want to make any changes to your translation or remove it, please email us (info@recodeproject.com)
 
 
