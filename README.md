@@ -9,6 +9,8 @@ An active archive of computer art.
 
 This project aims to resurrect forgotten works of computer art and port them to a language that is widely used, easily accessibly to beginners, and advanced enough to build upon the original artworks to create new ones. For these reasons, we have chosen Processing as the common language for this project due to its widespread use (particularly in educational environments), extensive documentation, and active community of developers and contributors.   
 
+Our current focus is on translating works found in issues of "Computer Graphics and Art" 1976-1978. PDFs of the original documents can be found in the "Downloads" section of this repo or on our site.
+
 All sketches are licensed under CC BY-SA 3.0.
 
 
