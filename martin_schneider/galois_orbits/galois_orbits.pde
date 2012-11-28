@@ -1,4 +1,3 @@
-
 // This sketch is part of the ReCode Project - http://recodeproject.com
 
 ////////////////////////////////////////////////////////////////////////
@@ -10,8 +9,6 @@
 ////////////////////////////////////////////////////////////////////////
 
 // (c) Martin Schneider 2012
-
-// Creative Commons license CC BY-SA 3.0
 
 // These patterns are displayed using 32 x 32 dots.
 // They visualize objects from  abstract algebra, 
@@ -33,6 +30,7 @@
 
 // - Use space to flip through the presets
 // - Use '+' and '-' to generate a different galois field
+// - Use 'b' to toggle background color
 // - Use the mouse to explore the orbits
 
 
@@ -43,28 +41,25 @@ int d = 1<<n;        // cells per dimension
 int led = 10;        // size of the dot
 int w = led * d + 1; // screen size
 
-int[] preset = { 
-  1087, 1157
-};
+int[] preset = {1087, 1157};
 int pick = 0;
 int p = preset[pick];
 
 boolean debug = true;
-int i0;
+int i0, bg;
 
 
 void setup() {
   size(w, w);
   ellipseMode(CORNER); 
-  stroke(255);
-  fill(0); 
-  smooth();
+  noStroke();
 }
 
 
 void draw() {
-
-  background(255);
+  
+  // adding some afterglow
+  fill(bg, 30); rect(0, 0, w, w); fill(255 - bg);
 
   // use mouse coordinates to get initial cell
   int x = mouseX/led & (d-1);
@@ -86,7 +81,7 @@ void draw() {
   // draw display
   for (i = 0; i < d*d; i++) {
     if (field[i]) {
-      ellipse(led * (i % d), led * (i / d), led, led);
+      ellipse(led * (i % d), led * floor(i / d), led, led);
     }
   }
 }
@@ -101,7 +96,9 @@ void keyPressed() {
     // previous pattern
     case '-': p = (p - 1) | d; break;
     // toggle debugging
-    case 'd': debug = !debug; 
+    case 'd': debug = !debug; break;
+    // switch background color
+    case 'b': bg = 255 - bg; break;
     default: return;
   }
 }
