@@ -6,7 +6,7 @@
  * by Zdenek Sykora 1976
  *
  * experimental recode by Krystof Pesek 2012
- * Creative Commons license CC BY-SA 3.0
+ * released under Creative Commons Attribution-ShareAlike 3.0 license
  *
  */
 
