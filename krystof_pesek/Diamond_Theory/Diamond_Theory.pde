@@ -27,6 +27,9 @@ void setup(){
 void draw(){
   background(255);
 
+  if(frameCount%3==0)
+    mutate();
+
   translate(triangle.width/2,triangle.height/2);
 
   for(int i = 0 ; i < generators.size();i++){
@@ -78,7 +81,67 @@ class Generator{
     shape = _shape;
 
 
-    randomize();
+    //randomize();
+
+    initialize();
+    //generate(10);
+
+
+  }
+
+  void generate(int howmuch){
+    for(int i = 0; i < howmuch;i++){
+      float ran = random(100);
+      if(ran>66){
+        mirrorX((int) random(5));
+      }else if(ran>33){
+        mirrorY((int) random(5));
+
+      }
+
+    }
+
+  }
+
+  void initialize(){
+    rulesx = new ArrayList();
+    rulesy = new ArrayList();
+
+    for(int i = 0 ; i < 4;i++){
+      rulesx.add("0000");
+      rulesy.add("0000");
+    }
+
+  }
+
+  void mirrorX(int where){
+    for(int i = 0 ; i < rulesx.size();i++){
+      String rx = (String)rulesx.get(i);
+      String neue = "";
+      for(int ii = 0 ; ii < where ; ii++){
+        //if(rx.charAt(i)=='1')
+        neue += rx.charAt(3-i)=='0'?'1':'0';
+      }
+      for(int ii = where ; ii < 4 ; ii++){
+        neue += rx.charAt(i);
+      }
+      rulesx.set(i,neue);
+    }
+  }
+
+  void mirrorY(int where){
+    for(int i = 0 ; i < rulesy.size();i++){
+      String ry = (String)rulesy.get(i);
+      String neue = "";
+      for(int ii = 0 ; ii < where ; ii++){
+        //if(rx.charAt(i)=='1')
+        neue += ry.charAt(3-i)=='0'?'1':'0';
+      }
+      for(int ii = where ; ii < 4 ; ii++){
+        neue += ry.charAt(i);
+      }
+      rulesy.set(i,neue);
+    }
 
 
   }
@@ -142,10 +205,11 @@ class Generator{
   }
 
 }
-void mousePressed(){
+
+void mutate(){
   for(int i = 0 ; i < generators.size();i++){
     Generator current = (Generator)generators.get(i);
-    current.randomize();
+    current.generate(1);
   }
 }
 
