@@ -10,6 +10,8 @@
 
 // (c) Martin Schneider 2012
 
+// Creative Commons license CC BY-SA 3.0
+
 // These patterns are displayed using 32 x 32 dots.
 // They visualize objects from  abstract algebra, 
 // which are known as orbits of galois fields.

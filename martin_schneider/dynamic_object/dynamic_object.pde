@@ -11,6 +11,8 @@
 
 // (c) Martin Schneider 2012
 
+// Creative Commons license CC BY-SA 3.0
+
 // The dynamic object is a 32 x 32 display.
 // It visualizes objects from  abstract algebra, 
 // which are known as Galois groups.
