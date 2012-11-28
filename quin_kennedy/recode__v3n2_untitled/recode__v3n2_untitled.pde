@@ -1,7 +1,16 @@
+// This sketch is part of the ReCode Project - http://recodeproject.com
+// From Computer Graphics and Art vol3 no2 pg 30
+// by Roger Coqart
+// 
+// Quin Kennedy
+// 2012
+// Creative Commons license CC BY-SA 3.0
+
 LineData[] tileData;
-static final int numTiles = 8;
+//number selection inspired by version in PDF, not screenshot on website.
+static final int numTiles = 13;
 static final float gutterRelativeSize = .5;
-static final int windowSize = 400;
+static final int windowSize = 600;
 //we need space for each tile, 
 //space for each gutter to the left of each tile, 
 //and space for the final gutter (to the right of the final tile)
@@ -22,8 +31,9 @@ void draw(){
   strokeJoin(ROUND);
   noFill();
   //pick a random grid cell to be the focal point
-  int focusX = floor(random(numTiles));
-  int focusY = floor(random(numTiles));
+  //for now we will restrict it to have at most one row/column of empty squares
+  int focusX = floor(random(numTiles-9, 9));
+  int focusY = floor(random(numTiles-9, 9));
   //for each grid cell...
   for(int i = 0, gi = gutterSize; i < numTiles; i++, gi += gutterSize+tileSize){
     for(int j = 0, gj = gutterSize; j < numTiles; j++, gj += gutterSize+tileSize){
