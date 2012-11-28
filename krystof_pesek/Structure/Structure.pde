@@ -6,7 +6,7 @@
  * by Zdenek Sykora 1976
  *
  * experimental recode by Krystof Pesek 2012
- * copyleft
+ * Creative Commons license CC BY-SA 3.0
  *
  */
 
@@ -25,7 +25,7 @@ void setup(){
   imageMode(CENTER);
 
   plny = createGraphics(32,32,JAVA2D);
-  createShape();
+  createShaped();
 
   theta = new float[3000];
   for (int i = 0 ; i < theta.length ; i ++){
@@ -57,7 +57,7 @@ void draw(){
 
 /////////////////////////////////
 
-void createShape(){
+void createShaped(){
   int W = plny.width;
   int H = plny.height;
 
