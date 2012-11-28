@@ -34,8 +34,9 @@
 // This is the dynamic interactive version with pattern cycling and 
 // mouse interaction ( the original had 32 keys to control the pattern )
 
-// - press space to switch through presets
-// - press 'a' to animate 
+// - press space to toggle animation
+// - press 'p' to switch through presets
+// - press 'g' to toggle afterglow
 // - use the mouse to modify the pattern
 
 
@@ -55,10 +56,10 @@ long p = preset[pick];
 // the generator is used to create a more interesting pattern sequence
 long generator = 4299161607l; 
 
-int frames = 30;
-boolean animate = false;
+int frames = 60;
+boolean animate = true;
 boolean debug = true;
-
+boolean glow = true;
 
 void setup() {
  size(w, w);
@@ -67,9 +68,11 @@ void setup() {
 
 
 void draw() {
+
+  // add some afterglow
+  fill(0, glow ? 30 : 255); rect(0, 0, w, w); fill(255);
   
   // draw the pattern
-  background(0);
   for(int y = 0; y < d; y++) {
     for(int x = 0; x < d; x++) {
       
@@ -81,26 +84,20 @@ void draw() {
     }
   }
   
-  if(animate) {
-
-    // jump to a different pattern
-    if( frameCount % frames == 0) {
-       p *= 2;
-       if(p >= 1l<<d) p ^= generator;
-       info();
-    }
+  // jump to a different pattern
+  if( animate && frameCount % frames == 0) {
+    p *= 2;
+    if(p >= 1l<<d) p ^= generator;
+    info();
+  } 
     
-  } else {
-    
-    // change the pattern using the mouse
-    if(mousePressed) {
-      int x = (mouseX/led) & d-1;
-      int y = (mouseY/led) & d-1;
-      long bit = 1l<<(x ^ y);
-      p = mouseButton == LEFT ? p | bit : p & ~bit;
-      info();
-    }
-    
+  // change the pattern using the mouse
+  if(mousePressed) {
+    int x = (mouseX/led) & d-1;
+    int y = (mouseY/led) & d-1;
+    long bit = 1l<<(x ^ y);
+    p = mouseButton == LEFT ? p | bit : p & ~bit;
+    info();
   }
 
 }
@@ -110,13 +107,15 @@ void keyPressed() {
   
   switch(key) {
     // animation on/off
-    case 'a': animate = ! animate;  return;
+    case ' ': animate = ! animate;  return;
     // switch between presets
-    case ' ': p = preset[pick = (pick + 1) % preset.length]; animate = false; break;
+    case 'p': p = preset[pick = (pick + 1) % preset.length]; animate = false; break;
     // next pattern
     case '+': p++; break;
     // previous pattern
     case '-': p--; break;
+    // toggle afterglow
+    case 'g': glow = !glow; break;
     // toggle debugging
     case 'd': debug = !debug;
     default: return;
