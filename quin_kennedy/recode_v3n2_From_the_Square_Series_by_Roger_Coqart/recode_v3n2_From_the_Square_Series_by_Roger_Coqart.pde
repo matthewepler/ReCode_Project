@@ -39,8 +39,8 @@ void draw(){
   int focusX = floor(random(numTiles-9, 9));
   int focusY = floor(random(numTiles-9, 9));
   //for each grid cell...
-  for(float gi = -tileSize/2; gi < width; gi += gutterSize+tileSize){
-    for(float gj = -tileSize/2; gj < height; gj += gutterSize+tileSize){
+  for(float gi = 0; gi < width; gi += gutterSize+tileSize){
+    for(float gj = 0; gj < height; gj += gutterSize+tileSize){
       pushMatrix();
       translate(gi,gj);
       //rect(0, 0, tileSize, tileSize);
@@ -67,37 +67,28 @@ void shuffleTiles(){
 }
 
 void createTiles(){
-  //the two lines of the + -- not used in this version
+  //the two lines of the +
   //and the four lines of the square 
-  //and the four lines of the x
-  //and the 4 lines of half the outer square
-  int numTileTypes = 4+4+4;
+  //and the four lines of the x -- reduced to 2 after looking at http://recodeproject.com/translation/benjamin-fox-direct-from-the-square-series-roger-coqart
+  int numTileTypes = 2+4+2;
   int i = 0;
   tileData = new LineData[numTileTypes];
-  /*//two lines of the +
+  //two lines of the +
   tileData[i++] = new LineData(tileSize/2, 0, tileSize/2, tileSize);
   tileData[i++] = new LineData(0, tileSize/2, tileSize, tileSize/2);
-  */
+  
   //four lines of the square
   tileData[i++] = new LineData(tileSize/2, 0, 0, tileSize/2);
   tileData[i++] = new LineData(0, tileSize/2, tileSize/2, tileSize);
   tileData[i++] = new LineData(tileSize/2, tileSize, tileSize, tileSize/2);
   tileData[i++] = new LineData(tileSize, tileSize/2, tileSize/2, 0);
-  //four lines of the x
-  tileData[i++] = new LineData(0, 0, tileSize/2, tileSize/2);
+  //two lines of the x
+  tileData[i++] = new LineData(0, 0, tileSize, tileSize);
+  tileData[i++] = new LineData(tileSize, 0, 0, tileSize);
+  /*tileData[i++] = new LineData(0, 0, tileSize/2, tileSize/2);
   tileData[i++] = new LineData(tileSize/2, tileSize/2, tileSize, tileSize);
   tileData[i++] = new LineData(tileSize, 0, tileSize/2, tileSize/2);
-  tileData[i++] = new LineData(tileSize/2, tileSize/2, 0, tileSize);
-  //eight lines of the outer square
-  //though only show the top and left sides
-  tileData[i++] = new LineData(0, 0, tileSize/2, 0);
-  tileData[i++] = new LineData(tileSize/2, 0, tileSize, 0);
-  /*tileData[i++] = new LineData(tileSize, 0, tileSize, tileSize/2);
-  tileData[i++] = new LineData(tileSize, tileSize/2, tileSize, tileSize);
-  tileData[i++] = new LineData(tileSize, tileSize, tileSize/2, tileSize);
-  tileData[i++] = new LineData(tileSize/2, tileSize, 0, tileSize);
-  */tileData[i++] = new LineData(0, tileSize, 0, tileSize/2);
-  tileData[i++] = new LineData(0, tileSize/2, 0, 0);
+  tileData[i++] = new LineData(tileSize/2, tileSize/2, 0, tileSize);*/
 }
 
 class LineData{
