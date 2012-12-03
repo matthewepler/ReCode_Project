@@ -34,6 +34,7 @@
  *               (http://opensource.org/licenses/GPL-3.0)
  * Keywords...:  gaussian, distribution, random, processing, kerry, jones, recode
  * Inspiration:  http://www.colingodsey.com/javascript-gaussian-random-number-generator/
+ *               http://www.dreamincode.net/code/snippet1446.htm
  * History....:  2012-12-03 c1.0.0 - first public release
  * 
  * ********************************************/
