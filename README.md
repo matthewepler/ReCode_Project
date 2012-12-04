@@ -56,6 +56,6 @@ A: Yes. We will be adding more as we find it. Feel free to point us towards some
 Q: Who are you?  
 A: I'm Matt Epler (http://mepler.com). I'm a graduate student at NYU's Interactive Telecommunications Program and this is a side project I find interesting.  
 
-Q: Why aren't you using Processing.js?
+Q: Why aren't you using Processing.js?  
 A: Processing.js doesn't include all the functions available in regular Processing. We would like people to have access to all of those beautiful functions. If, however, you prefer to make something that can run in a browser we welcome that and will do our best to make it look right on our site. 
 
