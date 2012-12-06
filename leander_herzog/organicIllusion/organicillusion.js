@@ -1,17 +1,40 @@
+/**
+ * This sketch is part of the ReCode Project - http://recodeproject.com
+ * From Computer Graphics and Art vol2 no3 pg 13
+ * 
+ * "Organic Illusion"
+ * by William Kolomyjec
+ *
+ * experimental recode by Leander Herzog 2012
+ *
+ * Copyright (c) 2012 Leander Herzog
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
 
-// This sketch is part of the ReCode Project - http://recodeproject.com
-// From Computer Graphics and Art vol2 no3 pg 13
-// "Organic Illusion"
-// by William Kolomyjec
-//
-// Leander Herzog
-// 2012
-// Creative Commons license CC BY-SA 3.0
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
 
 var things = [];
 
 var Thing = Base.extend({
-  initialize: function(point ) {
+  initialize: function() {
     this.res=Math.round(unit*0.1*2), this.flex=180;
     this.offset=r(-this.flex, this.flex);
     this.nextoffset=r(-this.flex, this.flex);
@@ -61,8 +84,7 @@ function r(to,from){ return Math.random()*to-from; }
 var unit=200,rows=Math.ceil(view.viewSize._height/unit), columns=Math.ceil(view.viewSize._width/unit),one,two, shift, res, radius,tmp,n,dir;
 for (var i=0;i<columns;i++) {
   for (var j=0;j<rows;j++) {
-    vector = ( i*unit, j*unit),
-      things.push(new Thing(vector));
+    things.push(new Thing());
   }
 }
 
