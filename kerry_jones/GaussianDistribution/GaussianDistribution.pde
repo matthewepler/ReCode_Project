@@ -1,24 +1,52 @@
+/**
+ * This sketch is part of the ReCode Project - http://recodeproject.com
+ * Computer Graphics and Art – May, 1977 – Vol. 2, No. 2 – Pg 33
+ * 
+ * "Gaussian Distribution"
+ * by Kerry Jones 1976
+ *
+ * direct recode by Stefan Huber 2012
+ *
+ * Copyright (c) 2012 Stefan Huber
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
 /* ******************************************
  *
  * Name.......:  GaussianDistribution.pde
- * Project....:  This sketch is part of the ReCode Project - http://recodeproject.com
- * Based on...:  «Gaussian Distribution» by Kerry Jones – 1976
- * As seen in.:  Computer Graphics and Art – May, 1977 – Vol. 2, No. 2 – Pg 33
- * Author.....:  Stefan Huber (initial commit)
- * Contact....:  sh{at}signalwerk[dot]ch
- * Version....:  1.0.0
- * Date.......:  2012-12-03
- * Comment....:  Please be aware of the fact that the smoothing and resolution 
- *               of the sketch has a huge impact on the look of the rendering. 
- *               I tried to optimize the view to 900px width. All other parameters 
- *               are based on the width. So if you change to an other 
- *               resolution it will also change the point count an the height.
- * Code.......:  Java with (some) Javadoc comments – four Space Indentation 
+ * Comment....:  Please be aware of the fact that the smoothing and 
+ *               resolution of the sketch has a huge impact on the 
+ *               look of the rendering. I tried to optimize the view 
+ *               to 900px width. All other parameters are based on 
+ *               the width. So if you change to an other resolution 
+ *               it will also change the point count an the height.
+ * Code.......:  Java with (some) Javadoc comments – indent-level 4
  * Environment:  Processing 2.0b6 (Java) – Mac OS X
- * Alternative:  If you would like to run this sketch with processing.js do a sed:
+ * Alternative:  If you would like to run this sketch with 
+ *               processing.js do a sed:
  *
  *               # -r flag with GNU sed, -E flag with BSD/MacOSX sed
- *               # depending on your sed write all between the two '' in one line
+ *               # (write all between the two '' in one line)
  *               sed -E '
  *               s/private double /function /g;
  *               s/private void /function /g;
@@ -28,14 +56,13 @@
  *               s/screenW, screenH/900, 400/g;
  *               ' GaussianDistribution.pde > GaussianDistribution.js
  *
- * License....:  You may use this work under the terms of either the 
- *               MIT License (http://opensource.org/licenses/MIT) or the
- *               GNU General Public License (GPL) Version 3 
- *               (http://opensource.org/licenses/GPL-3.0)
- * Keywords...:  gaussian, distribution, random, processing, kerry, jones, recode
- * Inspiration:  http://www.colingodsey.com/javascript-gaussian-random-number-generator/
+ * Keywords...:  gaussian, distribution, random, processing, java, 
+ *               javascript, kerry, jones, recode
+ * Inspiration:  http://www.colingodsey.com/
+ *                   javascript-gaussian-random-number-generator/
  *               http://www.dreamincode.net/code/snippet1446.htm
- * History....:  2012-12-03 c1.0.0 - first public release
+ * History....:  2012-12-06 v1.0.1 - MOD: Licence fix
+ *               2012-12-03 v1.0.0 - ADD: first public release
  * 
  * ********************************************/
 
