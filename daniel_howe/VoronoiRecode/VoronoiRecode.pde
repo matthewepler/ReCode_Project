@@ -31,7 +31,6 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 ArrayList nodes, edges, tris;
 Edge actE, hullStart, index[];
 Delaunay dt;
@@ -132,13 +131,6 @@ void update() {
 }
 
 void clip(Node p) {
-  if (p.x < 1) p.x++;
-  if (p.x > width - 2) p.x--;
-  if (p.y < 1) p.y++;
-  if (p.y > height - 2) p.y--;
-}
-
-void clip2(Node p) {
   float d = dist(p.x,p.y,width/2,height/2);
   if (d > width/2) {
     p.x += (p.x < width/2) ? 1 : -1; 
