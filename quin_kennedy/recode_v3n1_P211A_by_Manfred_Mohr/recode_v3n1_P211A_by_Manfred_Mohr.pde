@@ -2,14 +2,18 @@
 // From Computer Graphics and Art vol3 no1 pg 7
 // P-211A
 // by Manfred Mohr
+//
+//extra inspiration from: http://www.emohr.com/mohr_cube1_211.html
+// - screenshot included in repo
 // 
 // Quin Kennedy
 // 2012
 // Creative Commons license CC BY-SA 3.0
-static final int boxSize = 100;
-static final int cellSize = 200;
+static final int boxSize = 80;
+static final int cellSize = 190;
+static final int numCells = 7;
 static final int gutter = 10;
-static final int canvasWidth = cellSize*3+gutter*4;
+static final int canvasWidth = cellSize*numCells+gutter*(numCells+1);
 static final int canvasHeight = cellSize+gutter*2;
 int[] edgePairs = {0, 1,
                      2, 3,
@@ -36,88 +40,58 @@ void draw(){
   smooth(2);
   ortho(0, width, 0, height, Float.MIN_VALUE, Float.MAX_VALUE);
   strokeJoin(ROUND);
-  pushMatrix();
-  translate(gutter+cellSize/2., height/2, 0);
-  float rX = random(TWO_PI);
-  float rY = random(TWO_PI);
-  float rZ = random(TWO_PI);
-  //calculate extended points
-  rotateX(rX);
-  rotateY(rY);
-  rotateZ(rZ);
-  scale(boxSize);
-  
-  PVector[] points = getVertices();
   background(255);
-  noFill();
-  stroke(0, 0, 0, 50);
-  strokeWeight(2);
-  box(1);
-  popMatrix();
-  stroke(0);
-  strokeWeight(2);
-                 
-  //draw the first one 
-  for(int i = 0; i < edgePairs.length; i += 2){
-    calcExtendEdge(i, i+1, points, gutter, gutter, cellSize+gutter, height-gutter);
-    extendEdge(i, i+1, points);
-  }
-  stroke(200);
-  rect(gutter, gutter, cellSize, cellSize);
   
-  //draw the second one
+  boolean calcExtended = true;
+  PVector rot = new PVector(
+                      random(TWO_PI),
+                      random(TWO_PI),
+                      random(TWO_PI));
+  PVector rotV = new PVector(
+                      random(-QUARTER_PI/4, QUARTER_PI/4),
+                      random(-QUARTER_PI/4, QUARTER_PI/4),
+                      random(-QUARTER_PI/4, QUARTER_PI/4));
+  for(int k = 0, minX = gutter, minY = gutter, maxX = gutter+cellSize, maxY = gutter+cellSize; 
+      k < numCells; 
+      k++, minX += gutter+cellSize, maxX += gutter+cellSize){
+    if (!calcExtended){
+      rot.add(rotV);
+      for(int i = 0; i < edgePairs.length; i++){
+        endpoints[i].x += cellSize + gutter;
+      }
+    }
+    //draw square
+    drawSquare(minX, minY, maxX, maxY, calcExtended, rot);
+    calcExtended = !calcExtended;
+  }
+}
+
+void drawSquare(int minX, int minY, int maxX, int maxY, boolean calcExtended, PVector rot){
   pushMatrix();
-  translate(width/2, height/2, 0);
-  rX += random(-QUARTER_PI/2, QUARTER_PI/2);
-  rY += random(-QUARTER_PI/2, QUARTER_PI/2);
-  rZ += random(-QUARTER_PI/2, QUARTER_PI/2);
+  translate((minX+maxX)/2., (minY+maxY)/2., 0);
   //calculate extended points
-  rotateX(rX);
-  rotateY(rY);
-  rotateZ(rZ);
+  rotateX(rot.x);
+  rotateY(rot.y);
+  rotateZ(rot.z);
   scale(boxSize);
   //background(255);
   noFill();
   stroke(0, 0, 0, 50);
   strokeWeight(2);
   box(1);
-  points = getVertices();
-  popMatrix();
-  stroke(0);
-  strokeWeight(2);
-  for(int i = 0; i < edgePairs.length; i++){
-    endpoints[i].x += (width-gutter*4)/3. + gutter;
-  }
-  for(int i = 0; i < edgePairs.length; i += 2){
-    //calcExtendEdge(edgePairs[i], edgePairs[i+1], points);
-    extendEdge(i, i+1, points);
-  }
-  stroke(200);
-  rect(gutter*2+cellSize, gutter, cellSize, cellSize);
-  
-  //draw the last one
-  pushMatrix();
-  translate(gutter*3+cellSize*2+cellSize/2., height/2, 0);
-  //calculate extended points
-  rotateX(rX);
-  rotateY(rY);
-  rotateZ(rZ);
-  scale(boxSize);
-  //background(255);
-  noFill();
-  stroke(0, 0, 0, 50);
-  strokeWeight(2);
-  box(1);
-  points = getVertices();
+  PVector[] points = getVertices();
   popMatrix();
   stroke(0);
   strokeWeight(2);
   for(int i = 0; i < edgePairs.length; i += 2){
-    calcExtendEdge(i, i+1, points, gutter*3+cellSize*2, gutter, width-gutter, height-gutter);
+    if (calcExtended){
+      calcExtendEdge(i, i+1, points, minX, minY, maxX, maxY);
+    }
     extendEdge(i, i+1, points);
   }
   stroke(200);
-  rect(gutter*3+cellSize*2, gutter, cellSize, cellSize);
+  strokeWeight(1);
+  rect(minX, minY, cellSize, cellSize);
 }
 
 PVector[] getVertices(){
