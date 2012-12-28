@@ -1,6 +1,4 @@
 
-// This sketch is part of the ReCode Project - http://recodeproject.com
-
 ////////////////////////////////////////////////////////////////////////
 //                                                                    //
 //   "Dynamic Object GF.E (16, 4) 69/71" by Vladimir Bonačić          //
@@ -8,10 +6,6 @@
 //                     ( untitled 2 )                                 //
 //                                                                    //
 ////////////////////////////////////////////////////////////////////////
-
-// (c) Martin Schneider 2012
-
-// Creative Commons license CC BY-SA 3.0
 
 // The dynamic object is a 32 x 32 display.
 // It visualizes objects from  abstract algebra, 

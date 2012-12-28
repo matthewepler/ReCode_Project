@@ -1,5 +1,10 @@
 
-// This sketch is part of the ReCode Project - http://recodeproject.com
+/* 
+Part of the ReCode Project (http://recodeproject.com)
+Based on "Untitled 2" by Vladimir Bonacic
+Originally published in "Computer Graphics and Art" vol2 no3, 1977
+Copyright (c) 2012 Martin Schneider - OSI/MIT license (http://recodeproject/license).
+*/
 
 ////////////////////////////////////////////////////////////////////////
 //                                                                    //
@@ -8,10 +13,6 @@
 //                     (interactive version)                          //
 //                                                                    //
 ////////////////////////////////////////////////////////////////////////
-
-// (c) Martin Schneider 2012
-
-// Creative Commons license CC BY-SA 3.0
 
 // The dynamic object is a 32 x 32 display.
 // It visualizes objects from  abstract algebra, 
