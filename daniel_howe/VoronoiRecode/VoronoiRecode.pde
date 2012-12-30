@@ -88,8 +88,8 @@ void update() {
   int D = (int) Math.sqrt(nodes.size());
   for (int i = 0; i < edges.size(); i++) {
     Edge edge = (Edge) edges.get(i);
-    clip2(edge.p1);
-    clip2(edge.p2);
+    clip(edge.p1);
+    clip(edge.p2);
     int x = edge.p2.x - edge.p1.x;
     int y = edge.p2.y - edge.p1.y;
     int rr = x * x + y * y;
